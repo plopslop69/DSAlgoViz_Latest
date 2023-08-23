@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <%- include("./partials/csslibs.ejs") %>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/resource.css" />
+
+    <link rel="icon" href="/images/title_logo.png" type="image/icon type" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include("./partials/navbar.ejs", {page: "resource"}) %>
+
+    <main>
+      <h1
+        style="
+          text-align: center;
+          padding: 50px;
+          color: #4b50b9;
+          text-transform: capitalize;
+        "
+      >
+        <%= title %>
+      </h1>
+      <iframe
+        src="/pdfs/resources/<%= resource %>"
+        width="80%"
+        height="1200px"
+        style="padding-left: 400px"
+      >
+      </iframe>
+    </main>
+  </body>
+</html>

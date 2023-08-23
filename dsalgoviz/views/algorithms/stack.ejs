@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <title>Stack Algorithm Visualizer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Ropa Sans", sans-serif;
+        font-size: medium;
+      }
+      #stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .stack-item {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        border: 1px solid white;
+        background-color: #4b50b9;
+        color: white;
+        border-radius: 5px;
+        text-align: center;
+        align-items: center;
+        /* padding-top: 10px; */
+        justify-content: center;
+        animation: slideIn 0.5s ease-out forwards;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .stack-item.out {
+        animation: slideOut 0.5s ease-in forwards;
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+      .popup {
+        position: flex;
+        display: inline-flex;
+        color: black;
+        padding: 10px;
+        background-color: lightgreen;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px gray;
+        border-radius: 10px;
+        width: 100px;
+        height: 50px;
+      }
+
+      #output {
+        display: none;
+        border-radius: 5px;
+        width: fit-content;
+        padding: 10px;
+        margin-left: 10px;
+      }
+
+      input {
+        margin: 10px;
+        padding: 5px;
+      }
+      input[type="button"] {
+        padding: 5px 10px 5px 10px;
+      }
+
+      .btn {
+        border: 2px solid #4b50b9;
+        padding: 20px;
+        width: fit-content;
+        border-radius: 10px;
+        color: #4b50b9;
+        transition: all 0.2s ease-in-out;
+        background-color: white;
+      }
+
+      .btn:hover {
+        cursor: pointer;
+        color: white;
+        background-color: #4b50b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center; padding-top: 1rem; color: #4b50b9">
+      <H1 style="font-size: 34px">Stack Visualization</H1>
+    </div>
+    <div id="ip_div" style="display: inline-block; position: absolute">
+      <label for="size" style="margin-left: 10px"
+        ><strong>Size of Stack :</strong></label
+      ><br />
+      <input
+        type="number"
+        id="size"
+        name="size"
+        value=""
+        placeholder="Enter Size of Stack"
+      />
+      <input
+        class="btn"
+        type="button"
+        value="Set Size"
+        id="set-size"
+        style="margin-left: -5px"
+      />
+      <br /><br />
+      <label for="value" style="margin-left: 10px"
+        ><strong>Enter Value :</strong></label
+      ><br />
+      <input type="text" name="value" id="input" placeholder="Enter Value" />
+      <input
+        class="btn"
+        type="button"
+        value="Push"
+        id="push"
+        style="margin-left: -5px"
+      />
+      <input
+        class="btn"
+        type="button"
+        value="Pop"
+        id="pop"
+        style="margin-left: -5px"
+      />
+      <p id="output"></p>
+    </div>
+
+    <div id="stack"></div>
+
+    <script>
+      let stack = [];
+      let size = document.getElementById("set-size").value;
+      console.log(size);
+      function setSize() {
+        size = parseInt(document.querySelector("#size").value);
+        console.log(size);
+        if (isNaN(size)) {
+          displayOutput("Size of Stack set to 5 by default!");
+          size = 5;
+        } else {
+          size = parseInt(document.querySelector("#size").value);
+          displayOutput(`Size of Stack set to ${size}!`);
+        }
+      }
+
+      function push(item) {
+        if (stack.length === size) {
+          displayOutputs("Stack is full (Stack Overflow)");
+        } else {
+          stack.push(item);
+          displayOutput(`Item pushed: ${item}`);
+        }
+      }
+
+      function pop() {
+        if (stack.length === 0) {
+          displayOutputs("Stack is empty (Stack Underflow)");
+        } else {
+          let item = stack.pop();
+          displayOutput(`Item popped: ${item}`);
+        }
+      }
+
+      function render() {
+        let stackDiv = document.querySelector("#stack");
+        stackDiv.innerHTML = "";
+        for (let i = stack.length - 1; i >= 0; i--) {
+          let item = document.createElement("div");
+          item.classList.add("stack-item");
+          item.innerHTML = stack[i];
+          stackDiv.appendChild(item);
+        }
+      }
+
+      function showPopup(message) {
+        let popup = document.createElement("div");
+        popup.classList.add("popup");
+        popup.innerHTML = message;
+
+        document.body.appendChild(popup);
+
+        setTimeout(function () {
+          document.body.removeChild(popup);
+        }, 2000);
+      }
+      function displayOutput(message) {
+        let output = document.querySelector("#output");
+        output.innerHTML = message;
+        output.style.display = "block";
+        output.style.backgroundColor = "#4b50b9";
+        output.style.color = "white";
+        //showPopup(message);
+      }
+      function displayOutputs(message) {
+        let output = document.querySelector("#output");
+        output.innerHTML = message;
+        output.style.display = "block";
+        output.style.backgroundColor = "red";
+        output.style.color = "white";
+        output.style.fontWeight = "bold";
+        //showPopup(message);
+      }
+
+      let setSizeButton = document.querySelector("#set-size");
+      setSizeButton.addEventListener("click", setSize);
+
+      let pushButton = document.querySelector("#push");
+      pushButton.addEventListener("click", function () {
+        let input = document.querySelector("#input");
+        let item = input.value;
+        push(item);
+        render();
+      });
+
+      let popButton = document.querySelector("#pop");
+      popButton.addEventListener("click", function () {
+        pop();
+        render();
+      });
+    </script>
+  </body>
+</html>

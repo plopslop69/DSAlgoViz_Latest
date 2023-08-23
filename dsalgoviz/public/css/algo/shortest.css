@@ -1,0 +1,116 @@
+* {
+  font-family: "Ropa Sans", sans-serif;
+  color: #4b50b9;
+  overflow: hidden;
+}
+
+.node {
+  color: #4b50b9;
+  text-align: center;
+  font-size: 18px;
+}
+
+input[type="number"] {
+  display: inline-block;
+  width: 70px;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 8px -6px 8px 5px;
+  border-radius: 3px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+input[subtype="pathcost"] {
+  width: 125px;
+}
+
+button {
+  color: #4b50b9;
+  background-color: white;
+  border: 2px solid #4b50b9;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 30px 10px 30px;
+  text-align: center;
+  transition-duration: 300ms;
+}
+
+button:hover {
+  color: white;
+  background-color: #4b50b9;
+  transform: translate(0, -3px);
+  cursor: pointer;
+}
+
+#visualize {
+  margin-top: -12px;
+  padding: 20px 30px 20px 30px;
+  width: 51.8%;
+  opacity: 0;
+  cursor: auto;
+}
+
+.pc {
+  font-size: 15px;
+  color: #353535;
+  text-align: center;
+}
+
+#reset {
+  opacity: 0;
+}
+
+div#alert {
+  display: none;
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  background-color: #bdc8fae0;
+  margin-left: -350px;
+  text-align: center;
+  width: 500px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px #35353550;
+  padding: 3vh 10vh 3vh 10vh;
+  transition-duration: 400ms;
+  opacity: 0;
+}
+
+button[id="alert_reset"] {
+  padding: 7px 30px 7px 30px;
+  background-color: #bdc8fa20;
+}
+button[id="alert_reset"]:hover {
+  background-color: #4b50b9;
+  color: white;
+  cursor: pointer;
+  transform: translate(0, -3px);
+}
+
+button[id="close_alert"] {
+  all: unset;
+  position: relative;
+  left: 107%;
+  top: 3.25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #4b50b9;
+  color: #4b50b9;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  transition: all 400ms ease;
+}
+
+button[id="close_alert"]:hover {
+  color: white;
+  background-color: #4b50b9;
+  cursor: pointer;
+  transform: scale(1.2);
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <%- include("./partials/csslibs.ejs") %>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/resources.css" />
+
+    <script src="/js/img_animation.js" defer></script>
+
+    <link rel="icon" href="/images/title_logo.png" type="image/icon type" />
+    <title>DSAlgoViz - Resources</title>
+  </head>
+
+  <body>
+    <%- include("./partials/navbar", {page: "resource"}) %>
+
+    <main style="padding: 3rem 4rem 1rem 4rem">
+      <div class="container">
+        <style>
+          h1 {
+            text-align: center;
+            color: #4b50b9;
+          }
+
+          p {
+            text-align: center;
+          }
+        </style>
+        <div class="toptext">
+          <h1 style="color: #353535">Choose an Algorithm to Learn</h1>
+        </div>
+        <div class="row">
+          <div class="col col_custom">
+            <div class="row g-3 doc">
+              <div class="col col-md-6">
+                <img
+                  src="/images/choosealgo/stack/img2.png"
+                  class="img-fluid"
+                  alt="Stack"
+                  id="img3"
+                />
+              </div>
+              <div class="col col-md-6">
+                <div class="card-body">
+                  <h4 class="card-title">Stack</h4>
+                  <form>
+                    <a class="btn" href="/resources/stack">Get Resources</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col_custom">
+            <div class="row g-3">
+              <div class="col col-md-6">
+                <img
+                  src="/images/choosealgo/avl/img4.png"
+                  style="object-fit: fill"
+                  class="img-fluid"
+                  alt="AVL Tree"
+                  id="img5"
+                />
+              </div>
+              <div class="col col-md-6">
+                <div class="card-body">
+                  <h4 class="card-title">AVL Tree</h4>
+                  <form>
+                    <a class="btn" href="/resources/avl-tree">Get Resources</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col_custom">
+            <div class="row g-3">
+              <div class="col col-md-6">
+                <img
+                  src="/images/choosealgo/sort/img4.png"
+                  class="img-fluid"
+                  alt="Sort"
+                  id="img5"
+                />
+              </div>
+              <div class="col col-md-6">
+                <div class="card-body">
+                  <h4 class="card-title">Sorting</h4>
+                  <form>
+                    <a class="btn" href="/resources/sort">Get Resources</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col_custom">
+            <div class="row g-3">
+              <div class="col col-md-6">
+                <img
+                  src="/images/choosealgo/search/img3.png"
+                  class="img-fluid"
+                  alt="Searching"
+                  id="img4"
+                />
+              </div>
+              <div class="col col-md-6">
+                <div class="card-body">
+                  <h4 class="card-title">Searching</h4>
+                  <form>
+                    <a class="btn" href="/resources/search">Get Resources</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col_custom">
+            <div class="row g-3">
+              <div class="col col-md-6">
+                <img
+                  src="/images/choosealgo/shortest/img3.png"
+                  class="img-fluid"
+                  alt="Shortest Path"
+                  id="img4"
+                />
+              </div>
+              <div class="col col-md-6">
+                <div class="card-body">
+                  <h4 class="card-title">Shortest Path</h4>
+                  <form>
+                    <a class="btn" href="/resources/shortest">Get Resources</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col_custom">
+            <div class="row g-3">
+              <div class="col col-md-6">
+                <img
+                  src="/images/choosealgo/toh/img2.png"
+                  class="img-fluid"
+                  alt="Tower of Hanoi"
+                  id="img3"
+                />
+              </div>
+              <div class="col col-md-6">
+                <div class="card-body">
+                  <h4 class="card-title">Tower of Hanoi</h4>
+                  <form>
+                    <a class="btn" href="/resources/toh">Get Resources</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col col_custom">
+            <div class="row g-3">
+              <div class="col col-md-6">
+                <img
+                  src="/images/choosealgo/queue/img2.png"
+                  class="img-fluid"
+                  alt="Queue"
+                  id="img3"
+                />
+              </div>
+              <div class="col col-md-6">
+                <div class="card-body">
+                  <h4 class="card-title">Queue</h4>
+                  <form>
+                    <a class="btn" href="/resources/queue">Get Resources</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col_custom">
+            <div class="row g-3">
+              <div class="col col-md-6">
+                <img
+                  src="/images/choosealgo/hash/img3.png"
+                  class="img-fluid"
+                  alt="Hashing"
+                  id="img4"
+                />
+              </div>
+              <div class="col col-md-6">
+                <div class="card-body">
+                  <h4 class="card-title">Hashing</h4>
+                  <form>
+                    <a class="btn" href="/resources/hash">Get Resources</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+        <div class="toptext">
+          <h1 style="color: #353535">More Resources</h1>
+        </div>
+        <div class="more">
+          <!-- Uploaded Resources are shown here -->
+          <% uploads.forEach(upload => { %>
+
+          <div style="margin-bottom: 10px" class="more_file">
+            <div class="icon-fname">
+              <img
+                src="/images/files.png"
+                alt="files_icon"
+                width="50px"
+                height="50px"
+              />
+              <div class="fname"><%= upload %></div>
+            </div>
+            <div class="fbtns">
+              <a href="/uploads/<%= upload %>">
+                <button class="btn fbtn">Open</button></a
+              >
+              <a href="/uploads/<%= upload %>" download="questions.pdf">
+                <button class="btn fbtn">Download</button></a
+              >
+            </div>
+          </div>
+
+          <% }) %>
+        </div>
+        <!-- Copyright -->
+        <div class="cpr">DSAlgoviz Copyright © 2023. All rights reserved.</div>
+        <!-- Copyright -->
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background: #E2E7FE; */
+}
+
+body {
+  font-family: "Ropa Sans", sans-serif;
+}
+
+.navbar {
+  background-color: #fefefe;
+  height: 70px;
+}
+
+.theory {
+  background-color: #fefefe;
+  border: 1px solid #e2e7fe;
+  background-color: #fefefe;
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 50px;
+  padding-left: 30px;
+}
+
+main {
+  justify-content: center;
+  background-color: #e2e4ff;
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.navbar-nav {
+  gap: 35px;
+  color: #4b50b9;
+}
+
+.nav-link {
+  color: #4b50b9;
+}
+
+.btn {
+  border: 2px solid #4b50b9;
+  padding: 15px 30px 15px 30px;
+  width: 100%;
+  border-radius: 10px;
+  color: #4b50b9;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn.submit {
+  width: auto;
+}
+
+.btn.login {
+  border: 2px solid #4b50b9;
+  border-radius: 10px;
+  width: 132px;
+  color: #4b50b9;
+  padding: 8px 5px 8px 5px;
+}
+
+.btn:hover {
+  color: white;
+  /* transform: translate(2px, 2px); */
+  background-color: #4b50b9;
+  /* box-shadow: none; */
+}
+
+.col_custom {
+  margin: 20px;
+  padding: 20px;
+  background-color: #bfcafd;
+  border-radius: 10px;
+}
+
+.card {
+  margin: 0 auto;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px #4b50b95f;
+}
+
+h1 {
+  width: 1093px;
+  height: 107px;
+  margin-left: 13px;
+  font-family: "Ropa Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 100px;
+  line-height: 107px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #353535;
+}
+
+.a {
+  /* background-color: rgba(75, 80, 185, 1); */
+  align-content: center;
+  font-family: "Ropa Sans";
+  color: #ffffff;
+  width: 174px;
+  height: 80px;
+  top: 93px;
+  left: 160px;
+}
+
+.abox {
+  position: relative;
+  color: white;
+  background-color: rgba(75, 80, 185, 1);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.bbox {
+  position: relative;
+  color: rgba(75, 80, 185, 1);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.b {
+  background-color: #ffffff;
+  font-family: "Ropa Sans";
+  color: rgba(75, 80, 185, 1);
+  width: 243px;
+  height: 80px;
+  top: 93px;
+  left: 403px;
+}
+
+p {
+  display: flex;
+  width: auto;
+  height: auto;
+  margin-left: 13px;
+  font-family: "Ropa Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 40px;
+  align-items: center;
+  letter-spacing: 0.02em;
+  color: #353535;
+}
+
+.cpr {
+  margin: 60px 0px 0px 0px;
+  text-align: center;
+  color: #4b50b9;
+  width: 100%;
+}

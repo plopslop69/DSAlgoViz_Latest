@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    .node circle {
+      fill: #fff;
+      stroke: steelblue;
+      stroke-width: 3px;
+    }
+
+    .node text {
+      font: 12px sans-serif;
+    }
+
+    .node--internal text {
+      text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+    }
+
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 2px;
+    }
+    * {
+      font-family: "Ropa Sans", sans-serif;
+    }
+
+    input,
+    button {
+      font-size: 15px;
+      width: 392px;
+    }
+
+  .btn {
+    border: 2px solid #4b50b9;
+    padding: 8px;
+    width: fit-content;
+    border-radius: 10px;
+    color: #4b50b9;
+    transition: all 0.2s ease-in-out;
+    background-color: white;
+    }
+
+    .btn:hover {
+      cursor: pointer;
+      color: white;
+      background-color: #4b50b9;
+    }
+    .btndiv{
+      display: flex;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align: center; padding-top: 1rem; color: #4b50b9">
+    <H1>AVL Tree Visualization</H1>
+  </div>
+  <main>
+    <input
+      style="padding: 10px; border-radius: 5px;"
+      type="text"
+      id="value"
+      value=""
+      onkeypress="handleKeyPress(event)"
+      autofocus
+      placeholder="Press Enter to insert (Leave empty for random number)"
+      size="50"
+    />
+    <br>
+    <br>
+    <div class="btndiv">
+      <button class="btn" type="button" onclick="InsertNode();">Insert</button> 
+      <button class="btn" type="button" onclick="DeleteNode();">Delete</button>
+      <button class="btn" type="button" onclick="SearchNode();">Search</button>
+      <button class="btn" type="button" onclick="Print(bst.inorder);">Inorder</button>
+      <button class="btn" type="button" onclick="Print(bst.preorder);">Preorder</button>
+      <button class="btn" type="button" onclick="Print(bst.postorder);">Postorder</button>
+    </div>
+    <br />
+    <span id="msg"></span>
+  </main>
+
+  <!-- load the d3.js library -->
+  <script src="/js/algo/d3.js"></script>
+  <script src="/js/algo/bst_avl.js" charset="utf-8"></script>
+  <script src="/js/algo/graph.js" charset="utf-8"></script>
+</body>

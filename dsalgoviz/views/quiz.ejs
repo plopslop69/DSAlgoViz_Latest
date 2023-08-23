@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <%- include("./partials/csslibs.ejs") %>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/quiz.css" />
+
+    <link rel="icon" href="/images/title_logo.png" type="image/icon type" />
+
+    <script src="quiz.js" defer></script>
+    <title>DSAlgoViz - Quiz</title>
+  </head>
+
+  <body>
+    <%- include("./partials/navbar.ejs", {page: "quiz"}) %>
+
+    <main style="padding: 4rem 4rem 1rem 4rem">
+      <div class="container">
+        <div class="toptext">
+          <h1 style="font-size: 60px"><%= data[0]?.quiz %></h1>
+        </div>
+        <div class="quizinfo">
+          <h5 style="color: #353535">&nbspDifficulty Level: Medium ★ ★ ☆</h5>
+          <h5 style="color: #353535">&nbspTime Limit: None</h5>
+        </div>
+        <form id="main_form" action="/quiz" method="POST">
+          <!-- prettier-ignore -->
+
+          <!-- prettier-ignore -->
+          <% data.forEach((quiz) => { %>
+                <%- include("./partials/quiz-card.ejs", { quiz }) %>
+          <% }) %>
+
+          <div class="btndiv">
+            <button type="submit" class="btn submit">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="cpr">DSAlgoviz Copyright © 2023. All rights reserved.</div>
+    </main>
+  </body>
+</html>

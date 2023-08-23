@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shortest Path Algorithm</title>
+    <link rel="stylesheet" href="/css/algo/shortest.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <script defer src="/js/algo/shortest.js"></script>
+  </head>
+  <body>
+    <div style="text-align: center; color: #4b50b9">
+      <H1>Shortest Path Algorithm Visualization</H1>
+    </div>
+    &nbsp;
+    <div id="alert">
+      <button
+        type="button"
+        id="close_alert"
+        onclick="alert_prompt_disappear('close')"
+      >
+        X
+      </button>
+      <h1 id="alert_h">ALERT!</h1>
+      <p id="alert_msg">
+        <strong>The path you have entered caused an infinite loop!</strong
+        ><br /><br />Please enter valid path costs
+      </p>
+      <br />
+      <button type="button" id="alert_reset" onclick="alert_prompt_disappear()">
+        Reset
+      </button>
+    </div>
+    <div style="display: inline-block; vertical-align: top; width: 500px">
+      <div class="ip_pc" style="width: 500px">
+        <!-- Path Cost Input Fields -->
+        <label for="Path Cost 1" style="margin-left: 5px"
+          ><strong>Path Costs</strong></label
+        ><br /><br />
+
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Start to Node 1"
+          name="Path Cost S-1"
+          id="ip_pc_S-1"
+        />
+
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Start to Node 2"
+          name="Path Cost S-2"
+          id="ip_pc_S-2"
+        />
+
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Start to Node 3"
+          name="Path Cost S-3"
+          id="ip_pc_S-3"
+        />
+        <br />
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 1 to Node 3"
+          name="Path Cost 1-3"
+          id="ip_pc_1-3"
+        />
+
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 1 to Node 4"
+          name="Path Cost 1-4"
+          id="ip_pc_1-4"
+        />
+        <br />
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 2 to Node 3"
+          name="Path Cost 2-3"
+          id="ip_pc_2-3"
+        />
+
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 2 to Node 5"
+          name="Path Cost 2-5"
+          id="ip_pc_2-5"
+        />
+        <br />
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 3 to Node 4"
+          name="Path Cost 3-4"
+          id="ip_pc_3-4"
+        />
+
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 3 to Node 5"
+          name="Path Cost 3-5"
+          id="ip_pc_3-5"
+        />
+
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 3 to Goal"
+          name="Path Cost 3-E"
+          id="ip_pc_3-E"
+        />
+        <br />
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 4 to Goal"
+          name="Path Cost 4-E"
+          id="ip_pc_4-E"
+        />
+        <br />
+        <input
+          type="number"
+          class="ip_pc"
+          subtype="pathcost"
+          placeholder="Node 5 to Goal"
+          name="Path Cost 5-E"
+          id="ip_pc_5-E"
+        />
+      </div>
+      <br />
+      <div class="button">
+        <button type="submit" class="submit" onclick="load_pc()">
+          Load Values
+        </button>
+        <button
+          type="button"
+          id="reset"
+          disabled
+          class="reset"
+          onclick="reset_ip()"
+        >
+          Reset</button
+        ><br /><br />
+        <button type="button" id="visualize" onclick="visualize()" disabled>
+          Visualize
+        </button>
+      </div>
+      <br />
+    </div>
+
+    <svg
+      width="800"
+      height="660"
+      viewBox="100 50 800 660"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style="display: inline-block; vertical-align: top"
+    >
+      <g id="PathGroup">
+        <g id="L_3_E_G">
+          <line
+            id="L_3_E_b"
+            x1="549.953"
+            y1="373.5"
+            x2="815.952"
+            y2="368.463"
+            stroke="#43A241"
+            stroke-width="5"
+          />
+          <line
+            id="L_3_E"
+            data-subid="S_3_E"
+            class="frontpath"
+            x1="549.953"
+            y1="373.5"
+            x2="815.952"
+            y2="368.463"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_1_3_1_G">
+          <line
+            id="L_1_3_1_b"
+            x1="547.507"
+            y1="376.189"
+            x2="533.507"
+            y2="191.189"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <line
+            id="L_1_3_1"
+            data-subid="S_1_3"
+            class="frontpath"
+            x1="547.507"
+            y1="376.189"
+            x2="533.507"
+            y2="191.189"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_4_E_G">
+          <line
+            id="L_4_E_b"
+            x1="814.083"
+            y1="372.605"
+            x2="701.083"
+            y2="237.605"
+            stroke="#43A241"
+            stroke-width="5"
+          />
+          <line
+            id="L_4_E"
+            data-subid="S_4_E"
+            class="frontpath"
+            x1="814.083"
+            y1="372.605"
+            x2="701.083"
+            y2="237.605"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_3_5_G">
+          <line
+            id="L_3_5_3_b"
+            x1="551.614"
+            y1="374.091"
+            x2="674.614"
+            y2="478.091"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <line
+            id="L_3_5_3"
+            data-subid="S_3_5"
+            class="frontpath"
+            x1="551.614"
+            y1="374.091"
+            x2="674.614"
+            y2="478.091"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_2_5_G">
+          <line
+            id="L_2_5_b"
+            x1="672.572"
+            y1="482.463"
+            x2="396.572"
+            y2="434.463"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <line
+            id="L_2_5"
+            data-subid="S_2_5"
+            class="frontpath"
+            x1="672.572"
+            y1="482.463"
+            x2="396.572"
+            y2="434.463"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_5_E_G">
+          <line
+            id="L_5_E_b"
+            x1="671.484"
+            y1="478.012"
+            x2="814.484"
+            y2="369.012"
+            stroke="#43A241"
+            stroke-width="5"
+          />
+          <line
+            id="L_5_E"
+            data-subid="S_5_E"
+            class="frontpath"
+            x1="671.484"
+            y1="478.012"
+            x2="814.484"
+            y2="369.012"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_S_1_G">
+          <line
+            id="L_S_1_b"
+            x1="324.019"
+            y1="278.7"
+            x2="535.019"
+            y2="188.7"
+            stroke="#CE4545"
+            stroke-width="5"
+          />
+          <line
+            id="L_S_1"
+            data-subid="S_S_1"
+            class="frontpath"
+            x1="324.019"
+            y1="278.7"
+            x2="535.019"
+            y2="188.7"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_1_4_G">
+          <line
+            id="L_1_4_b"
+            x1="702.35"
+            y1="238.414"
+            x2="535.35"
+            y2="193.414"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <line
+            id="L_1_4"
+            data-subid="S_1_4"
+            class="frontpath"
+            x1="702.35"
+            y1="238.414"
+            x2="535.35"
+            y2="193.414"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_2_3_G">
+          <line
+            id="L_2_3_2_b"
+            x1="396.141"
+            y1="429.652"
+            x2="549.141"
+            y2="373.652"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <line
+            id="L_2_3_2"
+            data-subid="S_2_3"
+            class="frontpath"
+            x1="396.141"
+            y1="429.652"
+            x2="549.141"
+            y2="373.652"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_S_3_G">
+          <line
+            id="L_S_3_b"
+            x1="325.972"
+            y1="278.697"
+            x2="550.972"
+            y2="373.697"
+            stroke="#CE4545"
+            stroke-width="5"
+          />
+          <line
+            id="L_S_3"
+            data-subid="S_S_3"
+            class="frontpath"
+            x1="325.972"
+            y1="278.697"
+            x2="550.972"
+            y2="373.697"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_S_2_G">
+          <line
+            id="L_S_2_b"
+            x1="394.743"
+            y1="433.076"
+            x2="322.743"
+            y2="282.076"
+            stroke="#CE4545"
+            stroke-width="5"
+          />
+          <line
+            id="L_S_2"
+            data-subid="S_S_2"
+            class="frontpath"
+            x1="394.743"
+            y1="433.076"
+            x2="322.743"
+            y2="282.076"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+        <g id="L_3_4_G">
+          <line
+            id="L_3_4_3_b"
+            x1="548.326"
+            y1="372.144"
+            x2="701.326"
+            y2="234.144"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <line
+            id="L_3_4_3"
+            data-subid="S_3_4"
+            class="frontpath"
+            x1="548.326"
+            y1="372.144"
+            x2="701.326"
+            y2="234.144"
+            stroke="#E8ECFE"
+            stroke-width="5"
+          />
+        </g>
+      </g>
+
+      <g id="NodeGroup">
+        <g id="End_node_G">
+          <circle
+            class="backnode"
+            id="NodeE_b"
+            cx="816"
+            cy="371"
+            r="27.5"
+            fill="#43A241"
+            stroke="#43A241"
+            stroke-width="5"
+          />
+
+          <circle
+            class="frontnode"
+            id="NodeE"
+            cx="816"
+            cy="371"
+            r="27.5"
+            fill="white"
+            stroke="#43A241"
+            stroke-width="5"
+          />
+
+          <foreignObject x="791" y="361" width="50px" height="100px">
+            <div
+              style="color: #43a241"
+              class="node"
+              data-reachable=""
+              id="ValueE"
+              xlmns="http://www.w3.org/1999/xhtml"
+            >
+              Goal
+            </div>
+          </foreignObject>
+        </g>
+        <g id="Node5_G">
+          <circle
+            class="backnode"
+            id="Node5_b"
+            cx="673"
+            cy="480"
+            r="27.5"
+            fill="#4B50B9"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <circle
+            class="frontnode"
+            id="Node5"
+            cx="673"
+            cy="480"
+            r="27.5"
+            fill="white"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+
+          <foreignObject x="648" y="471" width="50px" height="100px">
+            <div
+              class="node"
+              data-reachable="3_E"
+              id="Value5"
+              xlmns="http://www.w3.org/1999/xhtml"
+            >
+              5
+            </div>
+          </foreignObject>
+        </g>
+        <g id="Node4_G">
+          <circle
+            class="backnode"
+            id="Node4_b"
+            cx="703"
+            cy="236"
+            r="27.5"
+            fill="#4B50B9"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <circle
+            class="frontnode"
+            id="Node4"
+            cx="703"
+            cy="236"
+            r="27.5"
+            fill="white"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+
+          <foreignObject x="678" y="226" width="50px" height="100px">
+            <div
+              class="node node4"
+              data-reachable="3_E"
+              id="Value4"
+              xlmns="http://www.w3.org/1999/xhtml"
+            >
+              4
+            </div>
+          </foreignObject>
+        </g>
+        <g id="Node3_G">
+          <circle
+            class="backnode"
+            id="Node3_b"
+            cx="550"
+            cy="376"
+            r="27.5"
+            fill="#4B50B9"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <circle
+            class="frontnode"
+            id="Node3"
+            cx="550"
+            cy="376"
+            r="27.5"
+            fill="white"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+
+          <foreignObject x="525" y="366" width="50px" height="100px">
+            <div
+              class="node node3"
+              data-reachable="1_2_4_5_E"
+              id="Value3"
+              xlmns="http://www.w3.org/1999/xhtml"
+            >
+              3
+            </div>
+          </foreignObject>
+        </g>
+        <g id="Node2_G">
+          <circle
+            class="backnode"
+            id="Node2_b"
+            cx="397"
+            cy="432"
+            r="27.5"
+            fill="#4B50B9"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <circle
+            class="frontnode"
+            id="Node2"
+            cx="397"
+            cy="432"
+            r="27.5"
+            fill="white"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+
+          <foreignObject x="372" y="423" width="50px" height="100px">
+            <div
+              class="node node2"
+              data-reachable="3_5"
+              id="Value2"
+              xlmns="http://www.w3.org/1999/xhtml"
+            >
+              2
+            </div>
+          </foreignObject>
+        </g>
+        <g id="Node1_G">
+          <circle
+            class="backnode"
+            id="Node1_b"
+            cx="536"
+            cy="191"
+            r="27.5"
+            fill="#4B50B9"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+          <circle
+            class="frontnode"
+            id="Node1"
+            cx="536"
+            cy="191"
+            r="27.5"
+            fill="white"
+            stroke="#4B50B9"
+            stroke-width="5"
+          />
+
+          <foreignObject x="511" y="181" width="50px" height="100px">
+            <div
+              class="node node1"
+              data-reachable="3_4"
+              id="Value1"
+              xlmns="http://www.w3.org/1999/xhtml"
+              onclick="change_num()"
+            >
+              1
+            </div>
+          </foreignObject>
+        </g>
+        <g id="Start_node_G">
+          <circle
+            class="backnode"
+            id="NodeS_b"
+            cx="325"
+            cy="281"
+            r="27.5"
+            fill="#CE4545"
+            stroke="#CE4545"
+            stroke-width="5"
+          />
+          <circle
+            class="frontnode"
+            id="NodeS"
+            cx="325"
+            cy="281"
+            r="27.5"
+            fill="white"
+            stroke="#CE4545"
+            stroke-width="5"
+          />
+
+          <foreignObject x="300" y="271" width="50px" height="100px">
+            <div
+              style="color: #ce4545"
+              class="node node_start"
+              data-reachable="1_2_3"
+              id="ValueS"
+              xlmns="http://www.w3.org/1999/xhtml"
+            >
+              Start
+            </div>
+          </foreignObject>
+        </g>
+      </g>
+
+      <!-- Path Costs integrated in SVG -->
+      <g>
+        <foreignObject x="390" y="205" width="50px" height="100px">
+          <div
+            class="pc pc_S-1"
+            id="pc_S-1"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->S-1
+          </div>
+        </foreignObject>
+
+        <foreignObject x="310" y="350" width="50px" height="100px">
+          <div
+            class="pc pc_S-2"
+            id="pc_S-2"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->S-2
+          </div>
+        </foreignObject>
+        <foreignObject x="420" y="295" width="50px" height="100px">
+          <div
+            class="pc pc_S-3"
+            id="pc_S-3"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->S-3
+          </div>
+        </foreignObject>
+
+        <foreignObject x="490" y="269" width="50px" height="100px">
+          <div
+            class="pc pc_1-3"
+            id="pc_1-3"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->1-3-1
+          </div>
+        </foreignObject>
+
+        <foreignObject x="605" y="190" width="50px" height="100px">
+          <div
+            class="pc pc_1-4"
+            id="pc_1-4"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->1-4
+          </div>
+        </foreignObject>
+
+        <foreignObject x="430" y="375" width="50px" height="100px">
+          <div
+            class="pc pc_2-3"
+            id="pc_2-3"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->2-3-2
+          </div>
+        </foreignObject>
+
+        <foreignObject x="520" y="470" width="50px" height="100px">
+          <div
+            class="pc pc_2-5"
+            id="pc_2-5"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->2-5
+          </div>
+        </foreignObject>
+
+        <foreignObject x="585" y="275" width="50px" height="100px">
+          <div
+            class="pc pc_3-4"
+            id="pc_3-4"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->3-4-3
+          </div>
+        </foreignObject>
+
+        <foreignObject x="610" y="405" width="50px" height="100px">
+          <div
+            class="pc pc_3-5"
+            id="pc_3-5"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->3-5-3
+          </div>
+        </foreignObject>
+
+        <foreignObject x="670" y="345" width="50px" height="100px">
+          <div
+            class="pc pc_3-E"
+            id="pc_3-E"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->3-E
+          </div>
+        </foreignObject>
+
+        <foreignObject x="755" y="285" width="50px" height="100px">
+          <div
+            class="pc pc_4-E"
+            id="pc_4-E"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->4-E
+          </div>
+        </foreignObject>
+
+        <foreignObject x="735" y="425" width="50px" height="100px">
+          <div
+            class="pc pc_5-E"
+            id="pc_5-E"
+            xlmns="http://www.w3.org/1999/xhtml"
+          >
+            <!-- Value inside path cost goes here -->5-E
+          </div>
+        </foreignObject>
+      </g>
+    </svg>
+  </body>
+</html>

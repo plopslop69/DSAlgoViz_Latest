@@ -1,0 +1,30 @@
+<div style="padding-top: 40px">
+  <div class="card">
+    <p class="card-text" style="padding-top: 20px; font-weight: 600"></p>
+
+    <p><%= quiz.question %></p>
+
+    <% if (quiz.code) { %>
+    <pre><%= quiz.code %></pre>
+    <% } %>
+
+    <div class="op">
+      <% for( let i = 0; i < quiz.answers.length; i++ ) { %>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          value="<%= quiz.answers[i] %>"
+          name="<%= quiz.id %>"
+          id="<%= quiz.id + quiz.answers[i] %>"
+        />
+        <label class="form-check-label" for="<%= quiz.id + quiz.answers[i] %>">
+          <%= quiz.answers[i] %>
+        </label>
+      </div>
+
+      <% } %>
+    </div>
+  </div>
+</div>

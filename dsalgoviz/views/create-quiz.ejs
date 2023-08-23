@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DSAlgoViz - Quiz Creator</title>
+
+    <%- include("./partials/csslibs.ejs") %>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/create-quiz.css" />
+    <script src="/js/create-quiz.js" defer></script>
+
+    <link rel="icon" href="/images/title_logo.png" type="image/icon type" />
+  </head>
+
+  <body>
+    <!-- prettier-ignore -->
+    <%- include("partials/navbar.ejs", {page: typeof page === "string" ? page : "quiz"}) %>
+    <main>
+      <div class="toptext">
+        <h1 style="color: #353535">Add Your Quiz Questions</h1>
+      </div>
+      <form
+        class="qn_form"
+        autocomplete="off"
+        accept="/create-quiz"
+        method="POST"
+      >
+        <input
+          type="text"
+          name="title"
+          id="title"
+          class="title"
+          placeholder="Enter Quiz Title"
+        />
+
+        <div id="question-container">
+          <!-- questions will be here -->
+        </div>
+
+        <div id="newqn"></div>
+
+        <div class="btn add" id="add" onclick="addQuestion()">
+          Add Question +
+        </div>
+        <p></p>
+        <button
+          type="submit"
+          id="submit"
+          class="btn submit"
+          onclick="submitqn()"
+        >
+          Submit Question
+        </button>
+      </form>
+      <!-- Copyright -->
+      <div class="cpr" style="color: #4b50b9">
+        DSAlgoviz Copyright © 2023. All rights reserved.
+      </div>
+      <!-- Copyright -->
+    </main>
+
+    <template id="question-card">
+      <div class="card-form" style="margin-top: 20px">
+        <div class="qn-no" id="qn-no">1</div>
+        <!-- Enter question number here-->
+        <div class="card-qn">
+          <div class="toptext">
+            <h4>
+              Enter the
+              <span
+                style="
+                  color: #4b50b9;
+                  text-decoration: underline;
+                  text-underline-offset: 3px;
+                "
+                >quiz question</span
+              >
+              here:
+            </h4>
+          </div>
+          <textarea
+            name="qn"
+            id="qn"
+            class="qn"
+            name="questions[]"
+            placeholder="Enter the question here"
+          ></textarea>
+          <h1></h1>
+          <textarea
+            name="qn"
+            id="qn_code"
+            class="qn code"
+            placeholder="Enter any code here if required"
+          ></textarea>
+        </div>
+
+        <div id="div_opt">
+          <hr class="hr" />
+          <div class="card-ops">
+            <div class="toptext">
+              <h4>
+                Enter the
+                <span
+                  style="
+                    color: #4b50b9;
+                    text-decoration: underline;
+                    text-underline-offset: 3px;
+                  "
+                  >quiz options</span
+                >
+                here:
+              </h4>
+              <h6>( Check the correct answer )</h6>
+            </div>
+            <ul class="ops">
+              <li>
+                <input
+                  type="text"
+                  placeholder="Option 1"
+                  name="op"
+                  id="op1"
+                  class="option"
+                /><input type="radio" name="opr" class="valid" id="op1" />
+              </li>
+              <br />
+              <li>
+                <input
+                  type="text"
+                  placeholder="Option 2"
+                  name="op"
+                  id="op2"
+                  class="option"
+                /><input type="radio" name="opr" class="valid" id="op2" />
+              </li>
+              <br />
+              <li>
+                <input
+                  type="text"
+                  placeholder="Option 3"
+                  name="op"
+                  id="op3"
+                  class="option"
+                /><input type="radio" name="opr" class="valid" id="op3" />
+              </li>
+              <br />
+              <li>
+                <input
+                  type="text"
+                  placeholder="Option 4"
+                  name="op"
+                  id="op4"
+                  class="option"
+                /><input type="radio" name="opr" class="valid" id="op4" />
+              </li>
+              <br />
+            </ul>
+          </div>
+        </div>
+      </div>
+    </template>
+  </body>
+</html>

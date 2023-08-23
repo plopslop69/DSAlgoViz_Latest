@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background: #E2E7FE; */
+}
+body {
+  font-family: "Ropa Sans", sans-serif;
+}
+.navbar {
+  background-color: #fefefe;
+  height: 70px;
+}
+main {
+  justify-content: center;
+  background-color: #e2e4ff;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.container-fluid {
+  background-color: #fefefe;
+  justify-content: center;
+}
+.navbar-nav {
+  gap: 35px;
+  color: #4b50b9;
+}
+
+.nav-link {
+  color: #4b50b9;
+}
+
+.img-fluid {
+  margin: auto;
+  transition: all 0.2s ease-in-out;
+  outline: 2.5px solid #4b50b900;
+  border-radius: 10px;
+  outline-offset: 2.5px;
+}
+
+.img-fluid:hover {
+  outline-color: #4b50b9ff;
+}
+
+.btn {
+  border: 2px solid #4b50b9;
+  padding: 15px 30px 15px 30px;
+  width: 75%;
+  border-radius: 10px;
+  color: #4b50b9;
+  transition: all 0.2s ease-in-out;
+}
+
+.submit {
+  width: auto;
+}
+
+.login {
+  border: 2px solid #4b50b9;
+  border-radius: 10px;
+  width: 132px;
+  color: #4b50b9;
+  padding: 8px 5px 8px 5px;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #4b50b9;
+}
+.row .doc {
+  display: flex;
+  justify-content: space-between;
+}
+.col_custom {
+  margin: 20px;
+  padding: 5px;
+  background-color: #d2d3ff;
+  border-radius: 15px;
+  width: fit-content;
+  height: fit-content;
+}
+.card-text {
+  justify-content: center;
+  text-align: left;
+}
+#more {
+  display: none;
+}
+#myBtn {
+  margin-left: 5px;
+  background-color: #d2d3ff;
+  border: 0px;
+  color: #4b50b9bf;
+  text-decoration: underline;
+  text-decoration: underline;
+  text-decoration-color: #4b50b900;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: all 0.25s ease-in-out;
+}
+
+#myBtn:hover {
+  color: #4b50b9ff;
+  text-decoration-color: #4b50b9ff;
+}
+
+#more1 {
+  display: none;
+}
+#myBtn1 {
+  background-color: #bfcafd;
+  color: gray;
+}
+
+.col-md-6 {
+  display: flex;
+  align-items: center;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.toptext {
+  margin: 20px 0px 40px 0px;
+  text-align: center;
+}
+.cpr {
+  margin: 60px 0px 0px 0px;
+  text-align: center;
+  color: #4b50b9;
+}

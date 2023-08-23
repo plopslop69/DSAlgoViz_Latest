@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="visupage.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <%- include("./partials/csslibs.ejs") %>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/visualize.css" />
+
+    <link rel="icon" href="/images/title_logo.png" type="image/png" />
+    <title>DSAlgoViz - Visualizer</title>
+
+    <script src="/js/visualize.js" defer></script>
+  </head>
+
+  <body>
+    <%- include("./partials/navbar.ejs", { page: "visualizer" }); %>
+
+    <main>
+      <div class="layout">
+        <div class="btnlist">
+          <button class="btn op" onclick="visu(0)">Stack</button>
+          <button class="btn op" onclick="visu(1)">AVL Tree</button>
+          <button class="btn op" onclick="visu(2)">Sorting</button>
+          <button class="btn op" onclick="visu(3)">Searching</button>
+          <button class="btn op" onclick="visu(4)">Shortest Path</button>
+          <button class="btn op" onclick="visu(5)">Tower of Hanoi</button>
+          <button class="btn op" onclick="visu(6)">Queue</button>
+          <button class="btn op" onclick="visu(7)">Hashing</button>
+        </div>
+
+        <div class="vbox">
+          <div
+            class="containers"
+            style="
+              background-color: white;
+              height: 750px;
+              border-radius: 10px;
+              text-align: center;
+            "
+          >
+            <h3 style="padding: 250px" id="deftext">
+              Select an algorithm to visualize.
+            </h3>
+            <object
+              style="display: none; padding: 20px"
+              width="100%"
+              height="100%"
+              data=""
+              id="obj"
+            ></object>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

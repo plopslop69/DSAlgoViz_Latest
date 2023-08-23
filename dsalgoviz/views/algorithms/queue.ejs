@@ -1,0 +1,249 @@
+<html>
+  <head>
+    <title>Queue Algorithm Visualizer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: "Ropa Sans", sans-serif;
+      }
+      #queue {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+      }
+
+      .queue-item {
+        display: flex;
+        width: 50px;
+        height: 50px;
+        border: 1px solid white;
+        color: white;
+        background-color: #4b50b9;
+        border-radius: 5px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        margin-top: 400px;
+        animation: slideIn 0.5s ease-out forwards;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .queue-item.out {
+        animation: slideOut 0.5s ease-in forwards;
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+      .popup {
+        position: flex;
+        display: inline-flex;
+        color: white;
+        padding: 10px;
+        background-color: #4b50b9;
+        border-radius: 5px;
+        /* box-shadow: 0px 0px 10px gray; */
+        border-radius: 10px;
+        width: 300px;
+        height: 50px;
+        margin-top: 10px;
+      }
+
+      #output {
+        display: none;
+        border-radius: 5px;
+        width: fit-content;
+        padding: 10px;
+        margin-left: 10px;
+      }
+
+      input {
+        margin: 10px;
+        padding: 5px;
+      }
+      input[type="button"] {
+        padding: 5px 10px 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center; padding-top: 1rem; color: #4b50b9">
+      <H1>Queue Visualization</H1>
+    </div>
+    <div id="ip_div" style="display: inline-block; position: absolute">
+      <label for="size" style="margin-left: 10px"
+        ><strong>Size of Queue :</strong></label
+      ><br />
+      <input
+        type="number"
+        id="size"
+        name="size"
+        value=""
+        placeholder="Enter Size of Queue"
+      />
+      <input
+        type="button"
+        value="Set Size"
+        id="set-size"
+        style="margin-left: -5px"
+      />
+      <br /><br />
+      <label for="value" style="margin-left: 10px"
+        ><strong>Enter Value :</strong></label
+      ><br />
+      <input type="text" name="value" id="input" placeholder="Enter Value" />
+      <input
+        type="button"
+        value="Enqueue"
+        id="enqueue"
+        style="margin-left: -5px"
+      />
+      <input
+        type="button"
+        value="Dequeue"
+        id="dequeue"
+        style="margin-left: -5px"
+      />
+      <p id="output"></p>
+      <br />
+      <div class="popup">
+        <strong>Front:</strong>
+        <span id="front"></span>
+        <strong style="margin-left: 10px">Rear:</strong>
+        <span id="rear"></span>
+      </div>
+    </div>
+
+    <div id="queue"></div>
+
+    <script>
+      let queue = [];
+      let size;
+      let count = 0;
+      let frontCount = -1;
+      let rearCount = 0;
+
+      const front = document.querySelector("#front");
+      const rear = document.querySelector("#rear");
+      const output = document.querySelector("#output");
+
+      function setSize() {
+        if (size == null) {
+          displayOutput("Size of Queue set to 5 by default!");
+          size = 5;
+        } else {
+          size = parseInt(document.querySelector("#size").value);
+          displayOutput(`Size of Queue set to ${size}!`);
+        }
+      }
+
+      function enqueue(item) {
+        if (queue.length === size) {
+          displayOutputs("Queue is full (IsFull)");
+        } else {
+          queue.push(item);
+          displayOutput(`Item enqueued: ${item}`);
+          count++;
+          rearCount++;
+          rear.innerHTML = rearCount;
+          if (frontCount === -1) {
+            frontCount++;
+            front.innerHTML = frontCount;
+          }
+        }
+      }
+
+      function dequeue() {
+        if (queue.length === 0) {
+          displayOutputs("Queue is empty (IsEmpty)");
+        } else {
+          let item = queue.shift();
+          displayOutput(`Item dequeued: ${item}`);
+          count--;
+          frontCount++;
+          front.innerHTML = frontCount;
+        }
+      }
+
+      function render() {
+        let queueDiv = document.querySelector("#queue");
+        queueDiv.innerHTML = "";
+        for (let i = queue.length - 1; i >= 0; i--) {
+          let item = document.createElement("div");
+          item.classList.add("queue-item");
+          item.innerHTML = queue[i];
+          queueDiv.appendChild(item);
+        }
+      }
+
+      function showPopup(message) {
+        let popup = document.createElement("div");
+        popup.classList.add("popup");
+        popup.innerHTML = message;
+
+        document.body.appendChild(popup);
+
+        setTimeout(function () {
+          document.body.removeChild(popup);
+        }, 2000);
+      }
+      function displayOutput(message) {
+        let output = document.querySelector("#output");
+        output.innerHTML = message;
+        output.style.display = "block";
+        output.style.backgroundColor = "#4B50B9";
+        output.style.color = "white";
+        //showPopup(message);
+      }
+      function displayOutputs(message) {
+        let output = document.querySelector("#output");
+        output.innerHTML = message;
+        output.style.display = "block";
+        output.style.backgroundColor = "red";
+        output.style.color = "white";
+        output.style.fontWeight = "bold";
+        //showPopup(message);
+      }
+
+      let setSizeButton = document.querySelector("#set-size");
+      setSizeButton.addEventListener("click", setSize);
+
+      let enqueueButton = document.querySelector("#enqueue");
+      enqueueButton.addEventListener("click", function () {
+        let input = document.querySelector("#input");
+        let item = input.value;
+        enqueue(item);
+        render();
+      });
+
+      let dequeueButton = document.querySelector("#dequeue");
+      dequeueButton.addEventListener("click", function () {
+        dequeue();
+        render();
+      });
+    </script>
+  </body>
+</html>

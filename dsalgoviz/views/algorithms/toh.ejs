@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tower Of Hanoi</title>
+    <link rel="stylesheet" href="/css/algo/toh.css" />
+
+    <%- include("../partials/csslibs.ejs") %>
+  </head>
+  <body>
+    <div class="container">
+      <div style="text-align: center; padding-top: 1rem; color: #4b50b9">
+        <h1>Tower of Hanoi Visualization</h1>
+      </div>
+      &nbsp;
+      <div class="settings">
+        <div class="group">
+          <button id="play">Play</button>
+          <button id="next">Next</button>
+          <button id="restart">Reset</button>
+        </div>
+        <div class="group">
+          <label for="number">No of disks</label>
+          <select id="number">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+        </div>
+        <div class="group">
+          <label for="speed">Speed</label>
+          <input type="range" id="speed" min="0" max="1000" />
+        </div>
+      </div>
+      <div style="display: flex;gap: 5px;">
+        <div class="toh-container" style="flex-grow: 1;">
+          <div class="pegs">
+            <div class="peg" data-peg="0"></div>
+            <div class="peg" data-peg="1"></div>
+            <div class="peg" data-peg="2"></div>
+          </div>
+          <div class="disks"></div>
+        </div>
+  
+        <div class="code">
+          <pre style="display: inline-block; padding: 10px;"><code><span class="function"><span style="color: #81A1C1">function</span><span style="color: #D8DEE9FF"> </span><span style="color: #88C0D0">toh</span><span style="color: #ECEFF4">(</span><span style="color: #D8DEE9">n</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">from</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">to</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">aux</span><span style="color: #ECEFF4">)</span><span style="color: #D8DEE9FF"> </span><span style="color: #ECEFF4">{</span></span></span>
+<span class="return-condition">
+  <span style="color: #D8DEE9FF">  </span><span style="color: #81A1C1">if</span><span style="color: #D8DEE9FF"> (</span><span style="color: #D8DEE9">n</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">===</span><span style="color: #D8DEE9FF"> </span><span style="color: #B48EAD">0</span><span style="color: #D8DEE9FF">) </span><span style="color: #81A1C1">return;</span></span>
+</span><span class="toh-first">
+  <span style="color: #D8DEE9FF">  </span><span style="color: #88C0D0">toh</span><span style="color: #D8DEE9FF">(</span><span style="color: #D8DEE9">n</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">-</span><span style="color: #D8DEE9FF"> </span><span style="color: #B48EAD">1</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">from</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">aux</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">to</span><span style="color: #D8DEE9FF">)</span><span style="color: #81A1C1">;</span></span>
+</span><span class="move">
+  <span style="color: #D8DEE9FF">  </span><span style="color: #88C0D0">move</span><span style="color: #D8DEE9FF">(</span><span style="color: #D8DEE9">n</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">from</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">to</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">aux</span><span style="color: #D8DEE9FF">)</span></span>
+</span><span class="toh-last">
+  <span style="color: #D8DEE9FF">  </span><span style="color: #88C0D0">toh</span><span style="color: #D8DEE9FF">(</span><span style="color: #D8DEE9">n</span><span style="color: #D8DEE9FF"> </span><span style="color: #81A1C1">-</span><span style="color: #D8DEE9FF"> </span><span style="color: #B48EAD">1</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">aux</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">to</span><span style="color: #ECEFF4">,</span><span style="color: #D8DEE9FF"> </span><span style="color: #D8DEE9">from</span><span style="color: #D8DEE9FF">)</span><span style="color: #81A1C1">;</span></span>
+</span>
+<span style="color: #ECEFF4">}</span></span>
+          </pre>
+            </div>
+
+      </div>
+    </div>
+
+    <script src="/js/algo/toh.js"></script>
+  </body>
+</html>

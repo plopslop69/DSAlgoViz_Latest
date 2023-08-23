@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <%- include("./partials/csslibs.ejs") %>
+    <link rel="stylesheet" href="/css/visualizer.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+
+    <link rel="icon" href="/images/title_logo.png" type="image/png" />
+    <title>DSAlgoViz - Choose Algorithm</title>
+
+    <script src="/js/img_animation.js" defer></script>
+  </head>
+
+  <body>
+    <%- include("./partials/navbar.ejs", { page: "visualizer" }) %>
+
+    <main style="padding: 3rem 4rem 1rem 4rem">
+      <div class="container">
+        <style>
+          h1 {
+            text-align: center;
+          }
+
+          p {
+            text-align: center;
+          }
+        </style>
+        <div class="toptext">
+          <h1>Choose an algorithm to <a href="/visualizer" style="color: #4b50b9;">visualize</a></h1>
+          <h5>Select the algorithm you want to visualize</h5>
+        </div>
+        <!-- prettier-ignore -->
+        <div class="row">
+          <!-- prettier-ignore -->
+          <%- 
+                include("./partials/visualizer-card.ejs", {
+                    id: "0",
+                    title: "Stack",
+                    thumb: `stack/img2.png`,
+                    resource: `stack`,
+                    text: `Stack is a linear data structure that follows a particular
+                    order in which the operations are performed. The order`
+                });
+            %>
+
+            <%- 
+                include("./partials/visualizer-card.ejs", {
+                    id: "1",
+                    title: "AVL Tree",
+                    thumb: `avl/img4.png`,
+                    resource: `avl-tree`,
+                    text: `AVL Tree can be defined as height balanced binary search
+                        tree in which each node is associated with a balance`
+                });
+            %>
+        </div>
+
+        <div class="row">
+          <!-- prettier-ignore -->
+          <%- 
+                include("./partials/visualizer-card.ejs", {
+                    id: "2",
+                    title: "Sorting",
+                    thumb: `sort/img4.png`,
+                    resource: `sort`,
+                    text: `A sorting algorithm is used to rearrange a given array or
+                    list of elements according to a comparison operator on the`
+                });
+            %>
+
+
+            <%- 
+                include("./partials/visualizer-card.ejs", {
+                    id: "3",
+                    title: "Searching",
+                    thumb: `search/img3.png`,
+                    resource: `search`,
+                    text: `Searching algorithms are designed to check for an element or
+                    retrieve an element from any`
+                });
+            %>
+        </div>
+
+        <div class="row">
+          <!-- prettier-ignore -->
+          <%- 
+            include("./partials/visualizer-card.ejs", {
+                id: "4",
+                title: "Shortest Path",
+                thumb: `shortest/img3.png`,
+                resource: `shortest`,
+                text: `The shortest path problem is about finding a path between
+                    vertices in a graph such that the total`
+            });
+        %>
+
+
+        <%- 
+            include("./partials/visualizer-card.ejs", {
+                id: "5",
+                title: "Tower of Hanoi",
+                thumb: `toh/img2.png`,
+                resource: `toh`,
+                text: `Tower of Hanoi is a mathematical puzzle where we gave three
+                    rods (A, B, and C) and N disks. Initially, all the`
+            });
+        %>
+        </div>
+
+        <div class="row">
+          <!-- prettier-ignore -->
+          <%- 
+          include("./partials/visualizer-card.ejs", {
+              id: "6",
+              title: "Queue",
+              thumb: `queue/img2.png`,
+              resource: `queue`,
+              text: `A Queue is defined as a linear data structure that is open
+                    at both ends and the operations are performed`
+          });
+      %>
+
+
+      <%- 
+          include("./partials/visualizer-card.ejs", {
+              id: "7",
+              title: "Hashing",
+              thumb: `hash/img3.png`,
+              resource: `hash`,
+              text: `Hashing is a technique or process of mapping keys, and
+                    values into the hash table by using a hash function.`
+          });
+      %>
+        </div>
+
+        <!-- Copyright -->
+        <div class="cpr">DSAlgoviz Copyright © 2023. All rights reserved.</div>
+        <!-- Copyright -->
+      </div>
+    </main>
+
+    <script>
+      let choose_list = document.querySelectorAll("div.card-body > button");
+      // Has to be direct children or won't work
+      let choose_array = Array.from(choose_list);
+      // console.log(choose_array);
+
+      for (let i = 0; i < choose_array.length; i++) {
+        choose_array[i].addEventListener("click", () => {
+          sessionStorage.setItem("btn", choose_array[i].value);
+          window.location.href = "/visualize";
+        });
+      }
+    </script>
+  </body>
+</html>

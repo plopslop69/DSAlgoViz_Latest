@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background: #E2E7FE; */
+}
+body {
+  font-family: "Ropa Sans", sans-serif;
+}
+.navbar {
+  background-color: #fefefe;
+  height: 70px;
+}
+main {
+  justify-content: center;
+  background-color: #e2e7fe;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.container-fluid {
+  background-color: #fefefe;
+  justify-content: center;
+}
+.navbar-nav {
+  gap: 35px;
+  color: #4b50b9;
+}
+
+/* from here to */
+
+.btn {
+  border: 2px solid #4b50b9;
+  padding: 15px 30px 15px 30px;
+  width: 100%;
+  border-radius: 10px;
+  color: #4b50b9;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-link {
+  color: #4b50b9;
+}
+
+.submit {
+  width: auto;
+}
+
+.login {
+  vertical-align: middle;
+  border: 2px solid #4b50b9;
+  border-radius: 10px;
+  width: 132px;
+  color: #4b50b9;
+  padding: 12px 5px 8px 5px;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #4b50b9;
+}
+
+/* here copy */
+
+.col_custom {
+  margin: 20px;
+  padding: 20px;
+  background-color: #bfcafd;
+  border-radius: 10px;
+}
+.card-text {
+  justify-content: center;
+  text-align: left;
+}
+#more {
+  display: none;
+}
+#myBtn {
+  background-color: #bfcafd;
+  border: 0px;
+  color: gray;
+}
+#more1 {
+  display: none;
+}
+#myBtn1 {
+  background-color: #bfcafd;
+  border: 0px;
+  color: gray;
+}

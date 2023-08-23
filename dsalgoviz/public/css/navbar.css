@@ -1,0 +1,56 @@
+html{
+  overflow-y: scroll;
+}
+
+.navbar {
+  position: sticky;
+}
+
+.logo_def {
+  display: flex;
+  /* margin-top:  -22px; */
+  margin-left: 45px;
+}
+
+.logo_hover {
+  position: absolute;
+  margin-top: -43px;
+  margin-left: 45px;
+  opacity: 0; /* Opacity Works on percentage/100 i.e. 55% = 0.55 */
+  transition: opacity 300ms;
+}
+
+.logo_hover:hover {
+  opacity: 1;
+}
+
+ul {
+  margin: 10px;
+  list-style: none;
+}
+.nav-item {
+  /* display: -moz-stack; */
+  display: block;
+  transition: all 0.25s ease-in-out;
+  box-sizing: border-box;
+  margin-bottom: 1px;
+  border-bottom: 2px solid #4b50b99f;
+  border-radius: 2px;
+}
+
+.nav-item:not(.active) {
+  border-bottom: 3px solid #4b50b900;
+}
+
+.nav-item:not(.active):hover {
+  border-bottom: 3px solid #4b50b9ff;
+}
+
+.btn.login {
+  margin-right: 45px;
+}
+
+.navbar-nav {
+  gap: 35px;
+  color: #4b50b9;
+}
